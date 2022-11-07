@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+<p class="h1 m-5 offset-5">Доступные поездки</p>
+{% for i in range(row_amount) %}
+<div class="row m-5">
+    {% if i == row_amount - 1 %}
+    {% for j in range(amount % 4) %}
+    <div class="col-3">
+        <div class="card text-bg-dark" style="width: 18rem;">
+<!--            <img src="static/img/rio.png" class="card-img-top" alt="...">-->
+            <div class="card-body">
+                <h5 class="card-title">{{ data[keys[4 * i + j]]['driver'] }}</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item bg-dark text-light">Дата: {{ data[keys[4 * i + j]]['date'] }}</li>
+                <li class="list-group-item bg-dark text-light">Откуда: {{ data[keys[4 * i + j]]['from'] }}</li>
+                <li class="list-group-item bg-dark text-light">Куда: {{ data[keys[4 * i + j]]['to'] }}</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link" style="text-decoration: none">Забронировать</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    {% for j in range(4) %}
+    <div class="col-3">
+        <div class="card text-bg-dark" style="width: 18rem;">
+<!--            <img src="static/img/rio.png" class="card-img-top" alt="...">-->
+            <div class="card-body">
+                <h5 class="card-title">{{ data[keys[4 * i + j]]['driver'] }}</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item bg-dark text-light">Дата: {{ data[keys[4 * i + j]]['date'] }}</li>
+                <li class="list-group-item bg-dark text-light">Откуда: {{ data[keys[4 * i + j]]['from'] }}</li>
+                <li class="list-group-item bg-dark text-light">Куда: {{ data[keys[4 * i + j]]['to'] }}</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link" style="text-decoration: none">Забронировать</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endfor %}
+{% endblock %}
